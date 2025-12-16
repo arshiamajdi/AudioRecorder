@@ -1,11 +1,13 @@
 import pyaudio
 import wave
-from pynput.keyboard import Key, Listener
+from pynput.keyboard import Listener, Key
+
+print("Audio Recording Module Imported.")
 
 stop_AudioFlag = False
-def keyPressed(key):
+def AudiokeyPressed(key):
     if key == Key.space:
-        print("Recording Stopped.")
+        print("Audio Recording Stopped.")
         global stop_AudioFlag 
         stop_AudioFlag = True
         return False
@@ -23,8 +25,8 @@ def start_AudioRecording():
 
     frames = []
 
-    print("Recording Started... Press Space to Stop.")
-    listener = Listener(on_press=keyPressed)
+    print("Audio Recording Started... Press Space to Stop.")
+    listener = Listener(on_press=AudiokeyPressed)
     listener.start()
 
     while True:

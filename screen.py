@@ -2,13 +2,14 @@
 import pyautogui
 import cv2
 import numpy as np
-from pynput.keyboard import Key, Listener
+from pynput.keyboard import Listener, Key
+
+print("Screen Recording Module Imported.")
 
 stop_ScreenFlag = False
-
 def ScreenkeyPressed(key):
     if key == Key.space:
-        print("Recording Stopped.")
+        print("Screen Recording Stopped.")
         global stop_ScreenFlag 
         stop_ScreenFlag = True
         return False
@@ -37,7 +38,7 @@ def star_ScreenRecording():
     # # Resize this window
     # cv2.resizeWindow("Live", 480, 270)
 
-    print("Recording Started... Press Space to Stop.")
+    print("Screen Recording Started... Press Space to Stop.")
     listener = Listener(on_press=ScreenkeyPressed)
     listener.start()
 
