@@ -46,3 +46,5 @@ To maintain proper audio/video synchronization:
 
 This approach ensures correct playback speed and prevents audio/video desynchronization.
 
+Credit: https://forum.opencv.org/t/video-speed-is-very-fast/4269
+
