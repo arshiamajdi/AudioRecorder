@@ -2,9 +2,8 @@
 import pyautogui
 import cv2
 import numpy as np
+import time
 from pynput.keyboard import Listener, Key
-
-print("Screen Recording Module Imported.")
 
 stop_ScreenFlag = False
 def ScreenkeyPressed(key):
@@ -26,7 +25,7 @@ def star_ScreenRecording():
     filename = "Recording.mp4"
 
     # Specify frames rate.
-    fps = 5.0
+    fps = 4.5
 
     # Creating a VideoWriter object
     out = cv2.VideoWriter(filename, codec, fps, resolution)
@@ -44,6 +43,7 @@ def star_ScreenRecording():
 
     while True:
         try:
+            start = time.time()
             # Take screenshot using PyAutoGUI
             img = pyautogui.screenshot()
 
@@ -60,7 +60,12 @@ def star_ScreenRecording():
             # # Optional: Display the recording screen
             # cv2.imshow('Live', frame)
 
-            cv2.waitKey(130)
+            # Calculate time taken to capture the screen then set the FPS
+            end = time.time()
+            diff = (end-start)*1000
+            print('time: {:6.2f} ms | {:5.2f} FPS'.format(diff, 1000/diff ))
+
+            cv2.waitKey(1)
 
             if stop_ScreenFlag:
                 break
